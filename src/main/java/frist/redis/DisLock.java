@@ -19,7 +19,7 @@ import util.CommonException;
  * spring.redis.pool.max-wait=-1
  * spring.redis.pool.max-idle=1000
  * spring.redis.pool.min-idle=0
- * spring.redis.timeout=0
+ * spring.redis.timeout=0 
  * */
 
 @Service
