@@ -1,4 +1,4 @@
-package frist.redis;
+package start.redislock;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import start.dao.RedisDao;
 import util.CommonException;
 /**
  * 分布式阻塞锁 消息队列
@@ -127,7 +128,7 @@ public class DisLock {
 			String timeOutStr = map.get(TL_TIME_OUT);
 			Long timeOut = Long.valueOf(timeOutStr);
 			TimeUnit timeUnit = getTimeUnit(timeUnitName);
-			long incr = redisDao.incr(key, -1,timeUnit, timeOut);
+			long incr = redisDao.incr(key+LOCK_INCR_PRE, -1,timeUnit, timeOut);
 			//最后一个线程离开时队列应该为空所以不能加值
 			if(incr!=0) {
 				redisDao.push(key+LOCK_QUEUE_PRE);

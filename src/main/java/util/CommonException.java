@@ -1,6 +1,10 @@
 package util;
 
 public class CommonException extends Exception{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String code;
 	private String messge;
 	public CommonException() {
